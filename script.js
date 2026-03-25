@@ -63,3 +63,9 @@ function renderTable() {
 }
 
 renderTable();
+function log(msg) {
+    const logBox = document.getElementById("log");
+    logBox.innerHTML += `<div>${msg}</div>`;
+}
+
+log("System initialized");
