@@ -40,24 +40,28 @@ class Store {
 
 const store = new Store();
 
-store.addProduct(new Product("PS5 Controller", 89.99, 12));
-store.addProduct(new Product("Gaming Headset", 129.99, 8));
-store.addProduct(new Product("Nintendo Switch", 399.99, 5));
-store.addProduct(new PerishableProduct("Energy Drink", 19.99, 20, "2026-04-01"));
-store.addProduct(new PerishableProduct("Snack Pack", 14.99, 6, "2026-03-29"));
+store.addProduct(new Product("PS5 Controller", 74.99, 6));
+store.addProduct(new Product("Gaming Headset", 89.99, 4));
+store.addProduct(new Product("Nintendo Switch Game", 59.99, 8));
+store.addProduct(new PerishableProduct("Energy Drink", 3.49, 18, "2026-04-01"));
+store.addProduct(new PerishableProduct("Snack Pack", 4.99, 10, "2026-03-29"));
 
 function renderTable() {
     const table = document.getElementById("inventoryTable");
     table.innerHTML = "";
 
     store.inventory.forEach(p => {
+        const isLow = p.quantity < 10;
+
         table.innerHTML += `
-        <tr>
+        <tr style="${isLow ? 'background:#2a0000;' : ''}">
             <td>${p.name}</td>
-            <td>$${p.price}</td>
+            <td>$${p.price.toFixed(2)}</td>
             <td>${p.quantity}</td>
-            <td>$${p.getTotalValue()}</td>
-            <td>${p.quantity < 10 ? "Low" : "OK"}</td>
+            <td>$${p.getTotalValue().toFixed(2)}</td>
+            <td class="${isLow ? 'low-stock' : 'ok-stock'}">
+                ${isLow ? "Low Stock ⚠️" : "In Stock"}
+            </td>
         </tr>`;
     });
 }
@@ -82,3 +86,4 @@ function applyDiscount() {
 
     log("Discount applied to all products");
 }
+
