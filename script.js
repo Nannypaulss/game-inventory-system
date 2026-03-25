@@ -27,3 +27,21 @@ class PerishableProduct extends Product {
         return `${this.name} - $${this.price} (${this.quantity}) Exp: ${this.expirationDate}`;
     }
 }
+
+class Store {
+    constructor() {
+        this.inventory = [];
+    }
+
+    addProduct(p) {
+        this.inventory.push(p);
+    }
+
+    getInventoryValue() {
+        return this.inventory.reduce((sum, p) => sum + p.getTotalValue(), 0);
+    }
+
+    findProductByName(name) {
+        return this.inventory.find(p => p.name.toLowerCase() === name.toLowerCase()) || null;
+    }
+}
