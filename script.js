@@ -16,3 +16,14 @@ class Product {
         return `${this.name} - $${this.price} (${this.quantity})`;
     }
 }
+
+class PerishableProduct extends Product {
+    constructor(name, price, quantity, expirationDate) {
+        super(name, price, quantity);
+        this.expirationDate = expirationDate;
+    }
+
+    toString() {
+        return `${this.name} - $${this.price} (${this.quantity}) Exp: ${this.expirationDate}`;
+    }
+}
