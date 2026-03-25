@@ -102,3 +102,22 @@ body {
 .controls button:hover {
     background: #d62828;
 }
+#searchResult {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #0f0f0f;
+}
+
+#log {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#log div {
+    background: #0f0f0f;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+}
