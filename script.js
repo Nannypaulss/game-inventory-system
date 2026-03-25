@@ -69,3 +69,16 @@ function log(msg) {
 }
 
 log("System initialized");
+
+const beforeValue = store.getInventoryValue();
+document.getElementById("beforeValue").textContent = "$" + beforeValue.toFixed(2);
+
+function applyDiscount() {
+    store.inventory.forEach(p => p.price *= 0.85);
+    renderTable();
+
+    const afterValue = store.getInventoryValue();
+    document.getElementById("afterValue").textContent = "$" + afterValue.toFixed(2);
+
+    log("Discount applied to all products");
+}
